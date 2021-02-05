@@ -1,6 +1,6 @@
 // main.js
 
-
+var partyForm = document.getElementById("party-horn-form");
 var volumeControls = document.getElementById("volume-controls");
 var volumeNumber = document.getElementById("volume-number");
 var hornSound = document.getElementById("horn-sound");
@@ -13,13 +13,18 @@ var radioCarHorn = document.getElementById("radio-car-horn");
 var radioPartyHorn = document.getElementById("radio-party-horn");
 var soundImg = document.getElementById("sound-image");
 
-honkButton.type = 'button';
+// honkButton.type = 'button';
+// partyForm.onsubmit = "return preventSubmit(event)";
 volumeNumber.addEventListener("input", setVolumeNumber);
 volumeSlider.addEventListener("input", setVolumeSlider);
 honkButton.addEventListener("click", playAudio);
+honkButton.addEventListener("click", function(event) {
+    event.preventDefault();
+});
 radioAirHorn.addEventListener("input", changeAudioSrcAndLargeImg);
 radioCarHorn.addEventListener("input", changeAudioSrcAndLargeImg);
 radioPartyHorn.addEventListener("input", changeAudioSrcAndLargeImg);
+
 
 function setVolumeNumber() {
     hornSound.volume = volumeNumber.value / 100.0;
